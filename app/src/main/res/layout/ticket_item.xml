@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="8dp"
+
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="175dp"
+                android:src="@drawable/anna2"
+                >
+            </ImageView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Anne Maria"
+                    android:textStyle="bold"
+                    android:textColor="@color/inverse"
+                    android:padding="2dp"
+
+                    >
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nulla porttitor accumsan tincidunt. Cras ultricies ligula sed magna dictum porta. Donec sollicitudin molestie malesuada. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Cras ultricies ligula sed magna dictum porta. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultricies ligula sed magna dictum porta. Nulla quis lorem ut libero malesuada feugiat. Proin eget tortor risus. Donec sollicitudin molestie malesuada. Nulla quis lorem ut libero malesuada feugiat. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus."
+                    android:maxLength="100"
+                    android:textSize="12dp"
+                    android:textStyle="italic"
+                    android:textColor="@color/inverse"
+                    android:padding="2dp"
+
+                    >
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Started Data: 12.12.2022 15:45"
+                    android:textSize="11dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/inverse"
+                    android:padding="2dp"
+                    >
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Finished Data: 12.12.2022 15:45"
+                    android:textSize="11dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/inverse"
+                    android:padding="2dp"
+
+                    >
+
+                </TextView>
+                <Button
+                    android:layout_width="90dp"
+                    android:layout_height="30dp"
+                    android:text="Buy"
+                    android:textSize="10dp"
+                    android:drawableLeft="@drawable/ic_shopping_cart_white"
+                    android:background="@drawable/custom_dark_button"
+                    android:layout_margin="10dp"
+                    android:layout_gravity="right"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
