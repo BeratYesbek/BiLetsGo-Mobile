@@ -5,7 +5,10 @@
       <map>
         <entry key="..\:/Users/berat/AndroidStudioProjects/TicketMobileApp/app/src/main/res/drawable/custom_dark_button.xml" value="0.387" />
         <entry key="..\:/Users/berat/AndroidStudioProjects/TicketMobileApp/app/src/main/res/drawable/ic_shopping_cart_white.xml" value="0.387" />
-        <entry key="..\:/Users/berat/AndroidStudioProjects/TicketMobileApp/app/src/main/res/layout/activity_base.xml" value="0.2" />
+        <entry key="..\:/Users/berat/AndroidStudioProjects/TicketMobileApp/app/src/main/res/layout/activity_base.xml" value="0.25" />
+        <entry key="..\:/Users/berat/AndroidStudioProjects/TicketMobileApp/app/src/main/res/layout/activity_main.xml" value="0.18819655521783182" />
+        <entry key="..\:/Users/berat/AndroidStudioProjects/TicketMobileApp/app/src/main/res/layout/fragment_ticket.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/berat/AndroidStudioProjects/TicketMobileApp/app/src/main/res/layout/fragment_user.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/berat/AndroidStudioProjects/TicketMobileApp/app/src/main/res/layout/ticket_item.xml" value="0.358695652173913" />
         <entry key="..\:/Users/berat/AndroidStudioProjects/TicketMobileApp/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.30104166666666665" />
       </map>

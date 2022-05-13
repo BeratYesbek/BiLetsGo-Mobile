@@ -1,11 +1,15 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
+
 }
 
 android {
     compileSdk 32
-
+    buildFeatures {
+        dataBinding true
+    }
     defaultConfig {
         applicationId "com.example.ticketmobileapp"
         minSdk 26
