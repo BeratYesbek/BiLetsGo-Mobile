@@ -1,5 +1,6 @@
 package com.example.ticketmobileapp.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ticketmobileapp.Modals.Ticket
+import com.example.ticketmobileapp.Utilities.OnClickListener
+import com.example.ticketmobileapp.activities.TicketDetailActivity
 import com.example.ticketmobileapp.adapters.TicketViewAdapter
 import com.example.ticketmobileapp.databinding.FragmentTicketBinding
 
-class TicketFragment : Fragment() {
+class TicketFragment : Fragment(), OnClickListener<Ticket> {
 
     private lateinit var dataBinding: FragmentTicketBinding
     private lateinit var adapter : TicketViewAdapter
@@ -40,8 +43,13 @@ class TicketFragment : Fragment() {
     private fun runRecyclerView() {
         val layoutManager = LinearLayoutManager(context)
         dataBinding.recyclerViewTicketFragment.layoutManager = layoutManager
-        adapter = TicketViewAdapter(tickets)
+        adapter = TicketViewAdapter(tickets,this)
         dataBinding.recyclerViewTicketFragment.adapter = adapter
+    }
+
+    override fun onClickListener(data: Ticket) {
+       val intent = Intent(context,TicketDetailActivity::class.java)
+        startActivity(intent)
     }
 
 

@@ -7,9 +7,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ticketmobileapp.Modals.Ticket
 import com.example.ticketmobileapp.R
+import com.example.ticketmobileapp.Utilities.OnClickListener
 import com.example.ticketmobileapp.databinding.TicketItemBinding
 
-class TicketViewAdapter(private val tickets : ArrayList<Ticket>) : RecyclerView.Adapter<TicketViewAdapter.TicketViewHolder>() {
+class TicketViewAdapter(private val tickets : ArrayList<Ticket>,private val clickListener: OnClickListener<Ticket>) : RecyclerView.Adapter<TicketViewAdapter.TicketViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TicketViewHolder {
         val context = parent.context
@@ -18,7 +19,9 @@ class TicketViewAdapter(private val tickets : ArrayList<Ticket>) : RecyclerView.
         return TicketViewHolder(view)
     }
     override fun onBindViewHolder(holder: TicketViewHolder, position: Int) {
-
+        holder.view.btnSeeDetail.setOnClickListener {
+            clickListener.onClickListener(tickets[position])
+        }
     }
 
     override fun getItemCount(): Int {
