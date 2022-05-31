@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TicketMobileApp">
         <activity
+            android:name=".activities.PurchaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.PaymentActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.TicketDetailActivity"
             android:exported="false" />
         <activity
