@@ -4,11 +4,11 @@ import com.example.ticketmobileapp.modals.abstracts.Entity
 import com.google.gson.annotations.SerializedName
 
 class Seat(
-    @SerializedName("Id")
+    @SerializedName("id")
     val id:Number?,
-    @SerializedName("SeatNumber")
+    @SerializedName("seatNumber")
     val seatNumber : Number?,
-    @SerializedName("SalonId")
+    @SerializedName("salonId")
     val salonId : Number?
 ): Entity{
 }

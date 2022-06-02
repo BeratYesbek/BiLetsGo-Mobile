@@ -5,26 +5,26 @@ import com.google.gson.annotations.SerializedName
 import java.sql.Date
 
 class Ticket(
-    @SerializedName("Id")
+    @SerializedName("id")
     val id: Number?,
-    @SerializedName("Title ")
+    @SerializedName("title")
     val title: String?,
-    @SerializedName("Description")
+    @SerializedName("description")
     val description : String?,
-    @SerializedName("CategoryId")
+    @SerializedName("categoryId")
     val categoryId : Number?,
-    @SerializedName("SalonId")
+    @SerializedName("salonId")
     val salonId : Number?,
-    @SerializedName("Quantity")
+    @SerializedName("quantity")
     val quantity : Number?,
-    @SerializedName("Status")
+    @SerializedName("status")
     val status  : Boolean?,
-    @SerializedName("Created")
-    val created  : Date?,
-    @SerializedName("EventStartedDate")
-    val EventStartedDate   : Date?,
-    @SerializedName("EventFinishedDate")
-    val EventFinishedDate   : Date?,
+    @SerializedName("created")
+    val created  : String?,
+    @SerializedName("eventStartedDate")
+    val eventStartedDate   : String?,
+    @SerializedName("eventFinishedDate")
+    val eventFinishedDate   : String?,
     ) : Entity{
 
 }

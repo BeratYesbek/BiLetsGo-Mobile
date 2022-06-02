@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+    <data>
+        <variable
+            name="ticketReadDto"
+            type="com.example.ticketmobileapp.modals.dtos.TicketReadDto" />
+    </data
+        >
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,7 +37,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Anne Maria"
+                        android:text="@{ticketReadDto.ticket.title}"
                         android:textStyle="bold"
                         android:textColor="@color/inverse"
                         android:padding="2dp"
@@ -41,7 +47,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nulla porttitor accumsan tincidunt. Cras ultricies ligula sed magna dictum porta. Donec sollicitudin molestie malesuada. Donec rutrum congue leo eget malesuada. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Cras ultricies ligula sed magna dictum porta. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ultricies ligula sed magna dictum porta. Nulla quis lorem ut libero malesuada feugiat. Proin eget tortor risus. Donec sollicitudin molestie malesuada. Nulla quis lorem ut libero malesuada feugiat. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus."
+                        android:text="@{ticketReadDto.ticket.description}"
                         android:maxLength="100"
                         android:textSize="12dp"
                         android:textStyle="italic"
@@ -54,7 +60,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Started Data: 12.12.2022 15:45"
+                        android:text="@{ticketReadDto.ticket.eventStartedDate.toString()}"
                         android:textSize="11dp"
                         android:textStyle="bold"
                         android:textColor="@color/inverse"
@@ -65,7 +71,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Finished Data: 12.12.2022 15:45"
+                        android:text="@{ticketReadDto.ticket.eventFinishedDate.toString()}"
                         android:textSize="11dp"
                         android:textStyle="bold"
                         android:textColor="@color/inverse"

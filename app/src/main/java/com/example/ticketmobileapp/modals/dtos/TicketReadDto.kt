@@ -7,15 +7,15 @@ import com.example.ticketmobileapp.modals.Ticket
 import com.google.gson.annotations.SerializedName
 
 class TicketReadDto(
-    @SerializedName("Ticket")
+    @SerializedName("ticket")
     val ticket : Ticket?,
-    @SerializedName("Category")
+    @SerializedName("category")
     val category: Category?,
-    @SerializedName("Seats")
+    @SerializedName("seats")
     val seats : List<Seat>?,
-    @SerializedName("Salon")
+    @SerializedName("salon")
     val salon : Salon?,
-    @SerializedName("Images")
+    @SerializedName("images")
     val images : List<String>?
 ) {
 }
