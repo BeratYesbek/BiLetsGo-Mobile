@@ -1,13 +1,12 @@
 package com.example.ticketmobileapp.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ticketmobileapp.Modals.Ticket
+import com.example.ticketmobileapp.modals.Ticket
 import com.example.ticketmobileapp.R
-import com.example.ticketmobileapp.Utilities.OnClickListener
+import com.example.ticketmobileapp.utilities.OnClickListener
 import com.example.ticketmobileapp.databinding.TicketItemBinding
 
 class TicketViewAdapter(private val tickets : ArrayList<Ticket>,private val clickListener: OnClickListener<Ticket>) : RecyclerView.Adapter<TicketViewAdapter.TicketViewHolder>() {

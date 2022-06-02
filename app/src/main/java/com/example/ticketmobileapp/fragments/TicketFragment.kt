@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.ticketmobileapp.Modals.Ticket
-import com.example.ticketmobileapp.Utilities.OnClickListener
+import com.example.ticketmobileapp.modals.Ticket
+import com.example.ticketmobileapp.utilities.OnClickListener
 import com.example.ticketmobileapp.activities.TicketDetailActivity
 import com.example.ticketmobileapp.adapters.TicketViewAdapter
 import com.example.ticketmobileapp.databinding.FragmentTicketBinding
