@@ -18,6 +18,7 @@
             android:padding="5dp"
             />
         <EditText
+            android:id="@+id/editTextCardNumber"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="5dp"
@@ -35,6 +36,7 @@
             android:padding="5dp"
             />
         <EditText
+            android:id="@+id/editTextNameOnTheCard"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:padding="5dp"
@@ -50,6 +52,7 @@
             android:padding="5dp"
             />
         <EditText
+            android:id="@+id/editTextCvv"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="5dp"
@@ -120,6 +123,7 @@
             android:padding="5dp"
             />
         <EditText
+            android:id="@+id/editTextCardName"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="5dp"
@@ -127,6 +131,7 @@
             android:background="@drawable/custom_input"
             />
             <Button
+                android:id="@+id/btnSaveCard"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/custom_dark_button"

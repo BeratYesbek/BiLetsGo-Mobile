@@ -1,6 +1,8 @@
 package com.example.ticketmobileapp.dependencyResolvers
 
+import com.example.ticketmobileapp.services.abstracts.PaymentService
 import com.example.ticketmobileapp.services.abstracts.TicketService
+import com.example.ticketmobileapp.services.concretes.PaymentManager
 import com.example.ticketmobileapp.services.concretes.TicketManager
 import dagger.Module
 import dagger.Provides
@@ -16,5 +18,11 @@ class DependencyInjectionModule {
     @Singleton
     fun ticketServiceProvider() : TicketService {
         return TicketManager()
+    }
+
+    @Provides
+    @Singleton
+    fun paymentServiceProvider() : PaymentService {
+        return PaymentManager()
     }
 }

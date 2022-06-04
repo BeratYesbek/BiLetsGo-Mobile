@@ -10,7 +10,7 @@ import com.example.ticketmobileapp.utilities.OnClickListener
 import com.example.ticketmobileapp.databinding.TicketItemBinding
 import com.example.ticketmobileapp.modals.dtos.TicketReadDto
 
-class TicketViewAdapter(private val tickets : ArrayList<TicketReadDto>, private val clickListener: OnClickListener<Ticket>) : RecyclerView.Adapter<TicketViewAdapter.TicketViewHolder>() {
+class TicketViewAdapter(private val tickets : ArrayList<TicketReadDto>, private val clickListener: OnClickListener<TicketReadDto>) : RecyclerView.Adapter<TicketViewAdapter.TicketViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TicketViewHolder {
         val context = parent.context
@@ -20,10 +20,9 @@ class TicketViewAdapter(private val tickets : ArrayList<TicketReadDto>, private 
     }
     override fun onBindViewHolder(holder: TicketViewHolder, position: Int) {
         holder.view.ticketReadDto = tickets[position]
-        val title = tickets[position].ticket?.title
-        val category = tickets[position].category
 
         holder.view.btnSeeDetail.setOnClickListener {
+            clickListener.onClickListener(tickets[position])
         }
     }
 

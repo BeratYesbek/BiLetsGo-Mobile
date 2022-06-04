@@ -6,6 +6,7 @@ import com.example.ticketmobileapp.modals.Ticket
 import com.example.ticketmobileapp.modals.dtos.TicketReadDto
 import com.example.ticketmobileapp.services.abstracts.TicketService
 import com.example.ticketmobileapp.utilities.results.ListResponseModel
+import com.example.ticketmobileapp.utilities.results.SingleResponseModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -20,17 +21,19 @@ class TicketViewModel @Inject constructor(
 ) : BaseViewModel(application) {
 
     private val disposable = CompositeDisposable()
-    val liveData = MutableLiveData<List<TicketReadDto>>()
+    val ticketListLiveData = MutableLiveData<List<TicketReadDto>>()
+    val ticketLiveData = MutableLiveData<TicketReadDto>()
 
-    fun getTickets(){
+    fun getTickets() {
         disposable.add(
             ticketService.getAllTicketDetail()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<ListResponseModel<TicketReadDto>>(){
+                .subscribeWith(object :
+                    DisposableSingleObserver<ListResponseModel<TicketReadDto>>() {
                     override fun onSuccess(t: ListResponseModel<TicketReadDto>) {
-                        if(t.success){
-                            liveData.value = t.data!!
+                        if (t.success) {
+                            ticketListLiveData.value = t.data!!
                         }
                     }
 
@@ -38,6 +41,26 @@ class TicketViewModel @Inject constructor(
 
                     }
 
+                })
+        )
+    }
+
+    fun getTicketById(ticketID: Number?) {
+        disposable.add(
+            ticketService.getTicketDetailById(ticketID)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object :
+                    DisposableSingleObserver<SingleResponseModel<TicketReadDto>>() {
+                    override fun onSuccess(t: SingleResponseModel<TicketReadDto>) {
+                        if (t.success) {
+                            ticketLiveData.value = t.data!!
+                        }
+                    }
+
+                    override fun onError(e: Throwable) {
+
+                    }
 
                 })
         )

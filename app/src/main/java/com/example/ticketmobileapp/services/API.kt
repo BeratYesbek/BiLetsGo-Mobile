@@ -10,9 +10,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class API {
     companion object {
-        val BASE_URL = "https://af32-176-220-172-209.ngrok.io/api/"
-
-
         inline fun httpClientInterceptor(): OkHttpClient {
             val httpClient = OkHttpClient.Builder()
             httpClient.addInterceptor(object : Interceptor {
@@ -34,7 +31,7 @@ class API {
         // S is a service T is a model
         // for example url = https://localhost:44303/api/products or categories or students
         inline fun <reified S, reified T : Entity> api(): S {
-            var baseUrl = "https://af32-176-220-172-209.ngrok.io/api/"
+            var baseUrl = "https://a21e-151-135-204-209.ngrok.io/api/"
 
             //When we send request to API must put the model name, but some model name might end with 'y' character.
             // we always use plural name in API that's way if it was ended with 'y' character we need to remove 'y' and we need to put 'ies' end of the model name

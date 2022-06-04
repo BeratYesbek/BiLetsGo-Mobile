@@ -19,7 +19,7 @@ import com.example.ticketmobileapp.mvvm.TicketViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TicketFragment : Fragment(), OnClickListener<Ticket> {
+class TicketFragment : Fragment(), OnClickListener<TicketReadDto> {
     private val viewModel : TicketViewModel by viewModels()
     private lateinit var dataBinding: FragmentTicketBinding
     private lateinit var adapter : TicketViewAdapter
@@ -33,7 +33,7 @@ class TicketFragment : Fragment(), OnClickListener<Ticket> {
         tickets = ArrayList<TicketReadDto>()
 
         viewModel.getTickets()
-        viewModel.liveData.observe(viewLifecycleOwner) {
+        viewModel.ticketListLiveData.observe(viewLifecycleOwner) {
             tickets.addAll(it)
             adapter.notifyDataSetChanged()
         }
@@ -50,8 +50,11 @@ class TicketFragment : Fragment(), OnClickListener<Ticket> {
         dataBinding.recyclerViewTicketFragment.adapter = adapter
     }
 
-    override fun onClickListener(data: Ticket) {
+    override fun onClickListener(data: TicketReadDto) {
        val intent = Intent(context,TicketDetailActivity::class.java)
+        val ticketID = data.ticket!!.id
+        intent.putExtra("ticketID",ticketID.toString())
+        intent.putExtra("hello","Hello")
         startActivity(intent)
     }
 

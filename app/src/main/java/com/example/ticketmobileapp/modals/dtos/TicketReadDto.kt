@@ -5,6 +5,7 @@ import com.example.ticketmobileapp.modals.Salon
 import com.example.ticketmobileapp.modals.Seat
 import com.example.ticketmobileapp.modals.Ticket
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 class TicketReadDto(
     @SerializedName("ticket")
@@ -17,5 +18,5 @@ class TicketReadDto(
     val salon : Salon?,
     @SerializedName("images")
     val images : List<String>?
-) {
+) : Serializable {
 }

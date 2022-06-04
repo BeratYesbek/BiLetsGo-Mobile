@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:weightSum="10"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/customRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+
+            >
+
+        </androidx.recyclerview.widget.RecyclerView>
+        <Button
+            android:id="@+id/btnCloseCustomDialog"
+            android:background="@drawable/custom_dark_button"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:text="Close"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            >
+        </Button>
+    </LinearLayout>
+</layout>
