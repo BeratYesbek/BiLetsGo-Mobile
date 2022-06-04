@@ -47,7 +47,7 @@
         </TextView>
 
         <EditText
-
+            android:id="@+id/editTextAddress"
             android:layout_width="match_parent"
             android:inputType="textMultiLine"
             android:layout_margin="10dp"
@@ -67,7 +67,7 @@
         </TextView>
 
         <EditText
-
+            android:id="@+id/editTextPhoneNumber"
             android:layout_width="match_parent"
             android:inputType="number"
             android:layout_margin="10dp"
@@ -87,7 +87,7 @@
         </TextView>
 
         <EditText
-
+            android:id="@+id/editTextSocialIdentity"
             android:layout_width="match_parent"
             android:inputType="number"
             android:layout_margin="10dp"
@@ -127,6 +127,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/btnBuy"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/custom_dark_button"

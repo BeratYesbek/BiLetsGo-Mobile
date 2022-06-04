@@ -34,7 +34,9 @@ class TicketDetailActivity : AppCompatActivity() {
             paymentViewModel.getPaymentMethodsByUserID(1)
             paymentViewModel.liveData.observe(this){
                 if (it){
-                    val intent = Intent(this, PurchaseActivity::class.java)
+                    val intent = Intent(this, SeatSelectionActivity::class.java)
+                    val salonID = binding.ticketReadDto?.ticket?.salonId?.toString()
+                    intent.putExtra("salonID",salonID)
                     startActivity(intent)
                 }else{
                     Toast.makeText(this,"You don't have a payment method. Please add a payment method",Toast.LENGTH_LONG).show()
