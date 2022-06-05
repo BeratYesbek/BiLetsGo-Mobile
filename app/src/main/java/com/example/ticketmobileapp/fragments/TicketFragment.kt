@@ -34,6 +34,7 @@ class TicketFragment : Fragment(), OnClickListener<TicketReadDto> {
 
         viewModel.getTickets()
         viewModel.ticketListLiveData.observe(viewLifecycleOwner) {
+            tickets.clear()
             tickets.addAll(it)
             adapter.notifyDataSetChanged()
         }

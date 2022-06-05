@@ -9,6 +9,8 @@ class Seat(
     @SerializedName("seatNumber")
     val seatNumber : Number?,
     @SerializedName("salonId")
-    val salonId : Number?
+    val salonId : Number?,
+    @SerializedName("isBooked")
+    val isBooked : Boolean
 ): Entity{
 }

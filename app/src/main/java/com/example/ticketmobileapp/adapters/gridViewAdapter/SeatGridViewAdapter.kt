@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.Button
+import androidx.compose.ui.graphics.Color
+import androidx.core.content.ContextCompat
 import com.example.ticketmobileapp.R
 import com.example.ticketmobileapp.modals.Seat
 import com.example.ticketmobileapp.utilities.OnClickListener
@@ -26,6 +28,10 @@ class SeatGridViewAdapter(val seats : List<Seat>,val context : Context,val onCli
         val view : View = View.inflate(context, R.layout.custom_seat_selection_item,null)
         val button = view.findViewById<Button>(R.id.btnSeat)
         button.text = seats[p0]?.seatNumber?.toString()
+        if (seats[p0].isBooked){
+            button.isEnabled = false
+            button.setBackgroundColor(ContextCompat.getColor(context,R.color.red))
+        }
         button.setOnClickListener {
         onClickListener.onClickListener(seats[p0])
         }

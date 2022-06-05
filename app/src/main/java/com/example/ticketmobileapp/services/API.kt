@@ -1,6 +1,7 @@
 package com.example.ticketmobileapp.services
 
 import com.example.ticketmobileapp.modals.abstracts.Entity
+import com.example.ticketmobileapp.utilities.SharedPreferencesToken
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -16,9 +17,9 @@ class API {
                 override fun intercept(chain: Interceptor.Chain): Response {
                     val request = chain.request()
 
-
+                    val token = SharedPreferencesToken.token
                     val requestBuild = request.newBuilder()
-                        .addHeader("Authorization", "Bearer ")
+                        .addHeader("Authorization", "Bearer ${SharedPreferencesToken.token}")
                         .build()
                     return chain.proceed(requestBuild)
                 }
@@ -30,17 +31,20 @@ class API {
 
         // S is a service T is a model
         // for example url = https://localhost:44303/api/products or categories or students
-        inline fun <reified S, reified T : Entity> api(): S {
-            var baseUrl = "https://4f8a-151-135-204-209.ngrok.io/api/"
+        inline fun <reified S, reified T : Entity> api(fixUrl : Boolean = true): S {
+            var baseUrl = "https://biletsgoo.herokuapp.com//api/"
 
             //When we send request to API must put the model name, but some model name might end with 'y' character.
             // we always use plural name in API that's way if it was ended with 'y' character we need to remove 'y' and we need to put 'ies' end of the model name
-            if (T::class.java.simpleName.last() != 'y') {
-                baseUrl += "${T::class.java.simpleName}s/"
-            } else {
-                val length = T::class.java.simpleName.length
-                val modelName = T::class.java.simpleName.substring(0, length - 1)
-                baseUrl += "${modelName}ies/"
+            if(fixUrl){
+                if (T::class.java.simpleName.last() != 'y') {
+                    baseUrl += "${T::class.java.simpleName}s/"
+                } else {
+                    val length = T::class.java.simpleName.length
+                    val modelName = T::class.java.simpleName.substring(0, length - 1)
+                    baseUrl += "${modelName}ies/"
+                }
+
             }
 
             val client = httpClientInterceptor()

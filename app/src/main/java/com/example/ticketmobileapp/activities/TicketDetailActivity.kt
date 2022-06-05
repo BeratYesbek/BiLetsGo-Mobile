@@ -36,7 +36,9 @@ class TicketDetailActivity : AppCompatActivity() {
                 if (it){
                     val intent = Intent(this, SeatSelectionActivity::class.java)
                     val salonID = binding.ticketReadDto?.ticket?.salonId?.toString()
+                    val ticketID = binding.ticketReadDto?.ticket?.id.toString()
                     intent.putExtra("salonID",salonID)
+                    intent.putExtra("ticketID",ticketID)
                     startActivity(intent)
                 }else{
                     Toast.makeText(this,"You don't have a payment method. Please add a payment method",Toast.LENGTH_LONG).show()

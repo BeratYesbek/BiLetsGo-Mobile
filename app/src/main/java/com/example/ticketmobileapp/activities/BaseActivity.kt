@@ -14,7 +14,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class BaseActivity : AppCompatActivity() {
 
-    private lateinit var dataBinding : ActivityBaseBinding
+    private lateinit var dataBinding: ActivityBaseBinding
+    private var currentFragment = R.id.home
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,23 +24,26 @@ class BaseActivity : AppCompatActivity() {
         setContentView(view)
 
         dataBinding.bottomNavigationView.setOnItemSelectedListener { item ->
-            when(item.itemId){
-                R.id.home -> setHomeFragment()
-                R.id.user -> setUserFragment()
-            }
+            if (R.id.home == item.itemId && currentFragment != R.id.home)
+                setHomeFragment()
+            if (R.id.user == item.itemId && currentFragment != R.id.user)
+                setUserFragment()
+
             true
         }
     }
 
-    private fun setHomeFragment(){
+    private fun setUserFragment() {
+        currentFragment = R.id.user
         val action = TicketFragmentDirections.actionTicketFragmentToUserFragment()
         Navigation.findNavController(dataBinding.fragmentContainerView).navigate(action)
     }
-    private fun setUserFragment(){
+
+    private fun setHomeFragment() {
+        currentFragment = R.id.home
         val action = UserFragmentDirections.actionUserFragmentToTicketFragment()
         Navigation.findNavController(dataBinding.fragmentContainerView).navigate(action)
     }
-
 
 
 }

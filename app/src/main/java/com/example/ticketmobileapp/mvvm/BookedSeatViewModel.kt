@@ -2,9 +2,9 @@ package com.example.ticketmobileapp.mvvm
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
-import com.example.ticketmobileapp.modals.Seat
-import com.example.ticketmobileapp.services.abstracts.SeatService
-import com.example.ticketmobileapp.utilities.results.ListResponseModel
+import com.example.ticketmobileapp.modals.BookedSeat
+import com.example.ticketmobileapp.services.abstracts.BookedSeatService
+import com.example.ticketmobileapp.utilities.results.SingleResponseModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -13,32 +13,27 @@ import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 @HiltViewModel
-class SeatViewModel @Inject constructor(
-    private val seatService: SeatService,
+class BookedSeatViewModel @Inject constructor(
+    private val bookedSeatService: BookedSeatService,
     application: Application
 ) : BaseViewModel(application) {
 
     private val disposable = CompositeDisposable()
-    val seatsLiveData = MutableLiveData<List<Seat>>()
-
-
-    fun getSeatsBySalonID(salonID : Number?){
+    val result = MutableLiveData<Boolean>()
+    fun add(bookedSeat: BookedSeat){
         disposable.add(
-            seatService.getBySeatId(salonID).subscribeOn(Schedulers.newThread())
+            bookedSeatService.add(bookedSeat)
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : DisposableSingleObserver<ListResponseModel<Seat>>(){
-                    override fun onSuccess(t: ListResponseModel<Seat>) {
-                        if (t.success){
-                            seatsLiveData.value = t.data!!
-                        }
+                .subscribeWith(object : DisposableSingleObserver<SingleResponseModel<BookedSeat>>(){
+                    override fun onSuccess(t: SingleResponseModel<BookedSeat>) {
+                        result.value = t.success
                     }
 
                     override fun onError(e: Throwable) {
-
                     }
 
                 })
         )
     }
-
 }

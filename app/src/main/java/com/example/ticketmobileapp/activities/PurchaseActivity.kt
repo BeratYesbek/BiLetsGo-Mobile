@@ -11,9 +11,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ticketmobileapp.R
 import com.example.ticketmobileapp.adapters.PaymentViewAdapter
+import com.example.ticketmobileapp.auth.CurrentUser
 import com.example.ticketmobileapp.databinding.ActivityPurchaseBinding
+import com.example.ticketmobileapp.modals.BookedSeat
 import com.example.ticketmobileapp.modals.Payment
 import com.example.ticketmobileapp.modals.Purchase
+import com.example.ticketmobileapp.mvvm.BookedSeatViewModel
 import com.example.ticketmobileapp.mvvm.PaymentViewModel
 import com.example.ticketmobileapp.mvvm.PurchaseViewModel
 import com.example.ticketmobileapp.utilities.OnClickListener
@@ -27,12 +30,18 @@ class PurchaseActivity : AppCompatActivity(),OnClickListener<Payment> {
     private val payment = ArrayList<Payment>()
     private lateinit var dialog : Dialog
     private var paymentID : Number = 0
+    private var seatID : Number? = 0
+    private var ticketID : Number? = 0
     private val paymentViewModel : PaymentViewModel by viewModels()
     private val purchaseViewModel : PurchaseViewModel by viewModels()
+    private val bookedSeatViewModel : BookedSeatViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPurchaseBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        seatID =  intent.getStringExtra("seatID")?.toInt()
+        ticketID =  intent.getStringExtra("ticketID")?.toInt()
 
         binding.purchaseCardView.setOnClickListener {
             setDialog()
@@ -54,8 +63,10 @@ class PurchaseActivity : AppCompatActivity(),OnClickListener<Payment> {
         purchaseViewModel.add(Purchase(0,address,socialIdentity,phoneNumber,1,paymentID,3))
 
         purchaseViewModel.result.observe(this){
-            if (it){
+            if (it.success){
+                bookedSeat(it.data?.id)
                 Toast.makeText(this,"your payment has been received successfully",Toast.LENGTH_LONG).show()
+
                 finish()
             }else{
                 Toast.makeText(this,"your payment has not been received! TRY AGAIN LATER",Toast.LENGTH_LONG).show()
@@ -63,7 +74,9 @@ class PurchaseActivity : AppCompatActivity(),OnClickListener<Payment> {
             }
         }
     }
-
+    private fun bookedSeat(purchaseID : Number?){
+        bookedSeatViewModel.add(BookedSeat(0,seatID,CurrentUser.user.id!!,ticketID,purchaseID))
+    }
     private fun setDialog() {
         dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)

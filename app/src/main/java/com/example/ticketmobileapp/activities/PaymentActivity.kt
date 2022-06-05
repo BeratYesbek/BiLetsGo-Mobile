@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.ticketmobileapp.R
+import com.example.ticketmobileapp.auth.CurrentUser
 import com.example.ticketmobileapp.databinding.ActivityPaymentBinding
 import com.example.ticketmobileapp.modals.Payment
 import com.example.ticketmobileapp.mvvm.PaymentViewModel
@@ -41,7 +42,9 @@ class PaymentActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         val nameOnTheCard = binding.editTextNameOnTheCard.text.toString()
         val cvv = binding.editTextCvv.text.toString()
         val cardName = binding.editTextCardName.text.toString()
-        val payment = Payment(0, cardNumber, nameOnTheCard, cardName, year, month, cvv.toInt(), 1)
+        val payment = Payment(0, cardNumber, nameOnTheCard, cardName, year, month, cvv.toInt(),
+            CurrentUser.user.id!!
+        )
         addPayment(payment)
     }
 

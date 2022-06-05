@@ -3,7 +3,7 @@
     <data>
         <variable
             name="ticketReadDto"
-            type="com.example.ticketmobileapp.modals.dtos.TicketReadDto" />
+            type="com.example.ticketmobileapp.modals.dtos.TicketOrderDto" />
     </data
         >
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -118,10 +118,10 @@
 
                     </TextView>
                     <Button
-                        android:id="@+id/btnSeeDetail"
+                        android:id="@+id/btnCancelOrder"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:text="See Detail"
+                        android:text="Cancel"
                         android:textSize="10dp"
                         android:background="@drawable/custom_dark_button"
                         android:layout_margin="10dp"

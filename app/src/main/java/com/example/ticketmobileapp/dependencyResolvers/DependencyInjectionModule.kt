@@ -1,13 +1,7 @@
 package com.example.ticketmobileapp.dependencyResolvers
 
-import com.example.ticketmobileapp.services.abstracts.PaymentService
-import com.example.ticketmobileapp.services.abstracts.PurchaseService
-import com.example.ticketmobileapp.services.abstracts.SeatService
-import com.example.ticketmobileapp.services.abstracts.TicketService
-import com.example.ticketmobileapp.services.concretes.PaymentManager
-import com.example.ticketmobileapp.services.concretes.PurchaseManager
-import com.example.ticketmobileapp.services.concretes.SeatManager
-import com.example.ticketmobileapp.services.concretes.TicketManager
+import com.example.ticketmobileapp.services.abstracts.*
+import com.example.ticketmobileapp.services.concretes.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -40,5 +34,17 @@ class DependencyInjectionModule {
     @Singleton
     fun seatServiceProvider() : SeatService {
         return SeatManager()
+    }
+
+    @Provides
+    @Singleton
+    fun bookedSeatServiceProvider() : BookedSeatService {
+        return BookedSeatManager()
+    }
+
+    @Provides
+    @Singleton
+    fun authServiceProvider() : AuthService {
+        return AuthManager()
     }
 }

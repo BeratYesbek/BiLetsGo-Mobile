@@ -24,7 +24,8 @@
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:src="@{ticketReadDto.images[0]}" />
+                android:downloadUrl="@{ticketReadDto.images[0]}"
+                />
 
             <TextView
                 android:layout_width="match_parent"
@@ -78,7 +79,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@{ticketReadDto.ticket.eventStartedDate}"
+                        android:text="@{ticketReadDto.ticket.eventStartedDate.toString()}"
                         android:textAlignment="center"
                         android:textColor="@color/inverse"
                         android:textStyle="bold">
@@ -89,8 +90,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@{ticketReadDto.ticket.eventFinishedDate}"
                         android:textAlignment="center"
+                        android:text="@{ticketReadDto.ticket.eventFinishedDate.toString()}"
                         android:textColor="@color/inverse"
                         android:textStyle="bold">
 

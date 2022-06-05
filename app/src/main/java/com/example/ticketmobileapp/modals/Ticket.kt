@@ -17,6 +17,8 @@ class Ticket(
     val salonId : Number?,
     @SerializedName("quantity")
     val quantity : Number?,
+    @SerializedName("price")
+    val price : Number?,
     @SerializedName("status")
     val status  : Boolean?,
     @SerializedName("created")

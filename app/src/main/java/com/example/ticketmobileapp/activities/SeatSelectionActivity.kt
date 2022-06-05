@@ -18,12 +18,14 @@ class SeatSelectionActivity : AppCompatActivity() , OnClickListener<Seat>{
 
     private lateinit var binding: ActivitySeatSelectionBinding
     private lateinit var adapter : SeatGridViewAdapter
+    private var ticketID : Number? = 0
     private val viewModel : SeatViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySeatSelectionBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val salonID  = intent.getStringExtra("salonID")
+        ticketID = intent.getStringExtra("ticketID")?.toInt()
         getData(salonID?.toInt())
     }
     private fun getData(salonID : Number?){
@@ -42,7 +44,8 @@ class SeatSelectionActivity : AppCompatActivity() , OnClickListener<Seat>{
 
     override fun onClickListener(data: Seat) {
         val intent =  Intent(this,PurchaseActivity::class.java)
-        intent.putExtra("SeatID",data.id)
+        intent.putExtra("seatID",data.id.toString())
+        intent.putExtra("ticketID",ticketID.toString())
         startActivity(intent)
     }
 

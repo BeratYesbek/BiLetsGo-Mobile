@@ -14,6 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TicketMobileApp">
         <activity
+            android:name=".activities.OrdersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.MainActivity2"
+            android:exported="false" />
+        <activity
             android:name=".activities.SeatSelectionActivity"
             android:exported="false" />
         <activity
