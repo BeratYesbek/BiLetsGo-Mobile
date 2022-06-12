@@ -1,6 +1,7 @@
 package com.example.ticketmobileapp.activities
 
 import android.app.Dialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
@@ -35,6 +36,7 @@ class PurchaseActivity : AppCompatActivity(),OnClickListener<Payment> {
     private val paymentViewModel : PaymentViewModel by viewModels()
     private val purchaseViewModel : PurchaseViewModel by viewModels()
     private val bookedSeatViewModel : BookedSeatViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPurchaseBinding.inflate(layoutInflater)
@@ -42,7 +44,8 @@ class PurchaseActivity : AppCompatActivity(),OnClickListener<Payment> {
 
         seatID =  intent.getStringExtra("seatID")?.toInt()
         ticketID =  intent.getStringExtra("ticketID")?.toInt()
-
+        var price = intent.getStringExtra("price")
+        binding.price.text = "$price$"
         binding.purchaseCardView.setOnClickListener {
             setDialog()
         }
@@ -54,22 +57,33 @@ class PurchaseActivity : AppCompatActivity(),OnClickListener<Payment> {
 
     private fun setVariables(){
         val socialIdentity = binding.editTextSocialIdentity.text.toString()
+        if(socialIdentity.length != 11){
+            Toast.makeText(this,"Enter 11 character",Toast.LENGTH_LONG).show()
+            return
+        }
         val address = binding.editTextAddress.text.toString()
         val phoneNumber = binding.editTextPhoneNumber.text.toString()
+        if(phoneNumber.length != 10){
+            Toast.makeText(this,"Enter 10 character. Example: 535 555 5555",Toast.LENGTH_LONG).show()
+            return
+        }
         if (paymentID == 0){
             Toast.makeText(this,"your must chose a payment method",Toast.LENGTH_LONG).show()
             return
         }
-        purchaseViewModel.add(Purchase(0,address,socialIdentity,phoneNumber,1,paymentID,3))
+        purchaseViewModel.add(Purchase(0,address,socialIdentity,phoneNumber,CurrentUser.user.id,paymentID,ticketID))
 
         purchaseViewModel.result.observe(this){
             if (it.success){
                 bookedSeat(it.data?.id)
                 Toast.makeText(this,"your payment has been received successfully",Toast.LENGTH_LONG).show()
-
+                val intent = Intent(this,BaseActivity::class.java)
+                startActivity(intent)
                 finish()
             }else{
                 Toast.makeText(this,"your payment has not been received! TRY AGAIN LATER",Toast.LENGTH_LONG).show()
+                val intent = Intent(this,BaseActivity::class.java)
+                startActivity(intent)
                 finish()
             }
         }
@@ -103,7 +117,7 @@ class PurchaseActivity : AppCompatActivity(),OnClickListener<Payment> {
     }
 
     private fun getPaymentMethods(){
-        paymentViewModel.getPaymentMethodsByUserID(1)
+        paymentViewModel.getPaymentMethodsByUserID(CurrentUser.user.id!!)
         paymentViewModel.paymentLiveData.observe(this){
             payment.clear()
             payment.addAll(it)
@@ -113,6 +127,7 @@ class PurchaseActivity : AppCompatActivity(),OnClickListener<Payment> {
 
     override fun onClickListener(data: Payment) {
         paymentID =data.id
+
         dialog.cancel()
     }
 }

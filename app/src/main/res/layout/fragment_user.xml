@@ -61,6 +61,16 @@
                 />
 
             <Button
+
+                android:id="@+id/btnPayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Payment Method"
+                android:background="@drawable/custom_dark_button"
+                android:layout_margin="5dp"
+                />
+
+            <Button
                 android:id="@+id/btnLogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

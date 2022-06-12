@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import com.example.ticketmobileapp.R
 import com.example.ticketmobileapp.activities.LoginActivity
 import com.example.ticketmobileapp.activities.OrdersActivity
+import com.example.ticketmobileapp.activities.PaymentActivity
 import com.example.ticketmobileapp.databinding.FragmentUserBinding
 import com.example.ticketmobileapp.mvvm.AuthViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,7 +42,10 @@ class UserFragment : Fragment() {
             val intent = Intent(context,OrdersActivity::class.java)
             startActivity(intent)
         }
-
+        binding.btnPayment.setOnClickListener {
+            val intent = Intent(context,PaymentActivity::class.java)
+            startActivity(intent)
+        }
         return binding.root.rootView
 
 

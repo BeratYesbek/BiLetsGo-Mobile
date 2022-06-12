@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        controlSession()
         customSharedPreferences  = CustomSharedPreferences(application)
         SharedPreferencesToken.token = customSharedPreferences.getToken()
         SharedPreferencesToken.userId = customSharedPreferences.getUserId()
@@ -40,19 +39,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun controlSession(){
-        viewModel.isLoggedIn()
-        viewModel.isLoggedIn.observe(this){
-            if (it.success){
-                CurrentUser.user = it.data!!
 
-                val intent = Intent(this,BaseActivity::class.java)
-                startActivity(intent)
-            }else{
-                Toast.makeText(this,"You must login! or Register!",Toast.LENGTH_LONG).show()
-            }
-        }
-    }
 
 
 

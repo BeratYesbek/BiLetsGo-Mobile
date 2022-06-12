@@ -32,7 +32,7 @@ class API {
         // S is a service T is a model
         // for example url = https://localhost:44303/api/products or categories or students
         inline fun <reified S, reified T : Entity> api(fixUrl : Boolean = true): S {
-            var baseUrl = "https://biletsgoo.herokuapp.com//api/"
+            var baseUrl = "https://biletsgoo.herokuapp.com/api/"
 
             //When we send request to API must put the model name, but some model name might end with 'y' character.
             // we always use plural name in API that's way if it was ended with 'y' character we need to remove 'y' and we need to put 'ies' end of the model name

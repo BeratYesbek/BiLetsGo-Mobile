@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TicketMobileApp">
         <activity
+            android:name=".activities.MainActivity"
+            android:exported="true" />
+        <activity
             android:name=".activities.OrdersActivity"
             android:exported="false" />
         <activity
@@ -21,9 +24,6 @@
             android:exported="false" />
         <activity
             android:name=".activities.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.MainActivity2"
             android:exported="false" />
         <activity
             android:name=".activities.SeatSelectionActivity"
@@ -41,7 +41,7 @@
             android:name=".activities.BaseActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activities.LoadingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

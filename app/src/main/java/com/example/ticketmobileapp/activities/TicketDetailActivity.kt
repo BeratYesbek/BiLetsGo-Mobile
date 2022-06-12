@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.ticketmobileapp.R
+import com.example.ticketmobileapp.auth.CurrentUser
 import com.example.ticketmobileapp.databinding.ActivityTicketDetailBinding
 import com.example.ticketmobileapp.mvvm.PaymentViewModel
 import com.example.ticketmobileapp.mvvm.TicketViewModel
@@ -31,14 +32,17 @@ class TicketDetailActivity : AppCompatActivity() {
 
 
         binding.btnBuy.setOnClickListener {
-            paymentViewModel.getPaymentMethodsByUserID(1)
+            paymentViewModel.getPaymentMethodsByUserID(CurrentUser.user.id!!)
             paymentViewModel.liveData.observe(this){
                 if (it){
                     val intent = Intent(this, SeatSelectionActivity::class.java)
                     val salonID = binding.ticketReadDto?.ticket?.salonId?.toString()
                     val ticketID = binding.ticketReadDto?.ticket?.id.toString()
+                    val price = binding.ticketReadDto?.ticket?.price?.toString()
+
                     intent.putExtra("salonID",salonID)
                     intent.putExtra("ticketID",ticketID)
+                    intent.putExtra("price",price)
                     startActivity(intent)
                 }else{
                     Toast.makeText(this,"You don't have a payment method. Please add a payment method",Toast.LENGTH_LONG).show()

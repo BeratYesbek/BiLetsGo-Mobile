@@ -30,8 +30,16 @@ class LoginActivity : AppCompatActivity() {
 
     private fun login(){
         val email = binding.editTextLoginEmail.text.toString()
+        if (!email.contains("@") && !email.contains(".com"))
+        {
+            Toast.makeText(this,"This is not an email address",Toast.LENGTH_LONG).show()
+            return
+        }
         val password = binding.editTextLoginPassword.text.toString()
-
+        if (password.length < 6){
+            Toast.makeText(this,"Password must be six character",Toast.LENGTH_LONG).show()
+            return
+        }
         authViewModel.login(UserLoginDto(email,password))
         authViewModel.result.observe(this){
             if(it.success){

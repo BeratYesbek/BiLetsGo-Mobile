@@ -32,6 +32,21 @@ class RegisterActivity : AppCompatActivity() {
         val fullName = binding.editTextFullName.text.toString()
         val password = binding.editTextRegisterPassword.text.toString()
 
+
+        if (!email.contains("@") && !email.contains(".com"))
+        {
+            Toast.makeText(this,"This is not an email address",Toast.LENGTH_LONG).show()
+            return
+        }
+        if (fullName.isBlank() ||fullName.isEmpty()){
+            Toast.makeText(this,"Name cannot be blank",Toast.LENGTH_LONG).show()
+            return
+        }
+        if (password.length < 6){
+            Toast.makeText(this,"Password must be six character",Toast.LENGTH_LONG).show()
+            return
+        }
+
         authViewModel.register(UserRegisterDto(fullName,email,password))
 
         authViewModel.result.observe(this){

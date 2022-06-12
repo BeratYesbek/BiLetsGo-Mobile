@@ -51,8 +51,11 @@
             android:layout_width="match_parent"
             android:inputType="textMultiLine"
             android:layout_margin="10dp"
+            android:layout_gravity="top"
+            android:gravity="top"
+            android:padding="5dp"
             android:background="@drawable/custom_input"
-            android:layout_height="100dp">
+            android:layout_height="60dp">
 
         </EditText>
 
@@ -71,6 +74,7 @@
             android:layout_width="match_parent"
             android:inputType="number"
             android:layout_margin="10dp"
+            android:padding="5dp"
             android:background="@drawable/custom_input"
             android:layout_height="50dp">
 
@@ -81,6 +85,7 @@
             android:layout_marginLeft="10dp"
             android:textSize="17dp"
             android:textColor="@color/black"
+            android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -113,6 +118,7 @@
 
             </TextView>
             <TextView
+                android:id="@+id/price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"

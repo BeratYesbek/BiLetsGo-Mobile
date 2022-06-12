@@ -62,6 +62,7 @@ class AuthViewModel @Inject constructor(
                         result.value = t
                         SharedPreferencesToken.token = t.data!!.token
                         SharedPreferencesToken.userId = t.data!!.user.id
+                        customSharedPreferences.saveToken(t.data)
                     }
 
                     override fun onError(e: Throwable) {

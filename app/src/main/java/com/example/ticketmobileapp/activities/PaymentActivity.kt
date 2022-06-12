@@ -39,9 +39,15 @@ class PaymentActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
     private fun validateValues() {
         val cardNumber = binding.editTextCardNumber.text.toString()
+
+
         val nameOnTheCard = binding.editTextNameOnTheCard.text.toString()
         val cvv = binding.editTextCvv.text.toString()
         val cardName = binding.editTextCardName.text.toString()
+        if(cardNumber.length == 16){
+            Toast.makeText(this,"Enter 16 character",Toast.LENGTH_LONG).show()
+            return
+        }
         val payment = Payment(0, cardNumber, nameOnTheCard, cardName, year, month, cvv.toInt(),
             CurrentUser.user.id!!
         )

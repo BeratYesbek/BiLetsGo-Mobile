@@ -111,8 +111,58 @@
                 android:layout_height="wrap_content"
                 android:padding="3dp"
                 android:text="@{ticketReadDto.category.name}"
-                android:textColor="@color/inverse"
+                android:textColor="@android:color/holo_red_dark"
                 android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="2"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="30dp"
+                    android:textAlignment="center"
+                    android:text='Quantity'>
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="30dp"
+                    android:textAlignment="center"
+                    android:text='Price'
+                    >
+
+                </TextView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="2"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="center"
+                    android:text='@{ticketReadDto.ticket.quantity.toString()+""}'
+                    android:layout_height="30dp">
+
+                </TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="30dp"
+                    android:textAlignment="center"
+                    android:text='@{ticketReadDto.ticket.price.toString()+"$"}'
+                    >
+
+                </TextView>
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btnBuy"
