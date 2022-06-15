@@ -22,6 +22,10 @@ class PaymentActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     private lateinit var binding: ActivityPaymentBinding
     private var year = 2022
     private var month = 6
+    private var ticketID : Number ?= 0
+    private var salonID : Number ?= 0
+    private var price : Number ?= 0
+
     private val viewModel : PaymentViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +35,9 @@ class PaymentActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         binding.spinnerMonth.onItemSelectedListener = this
         binding.spinnerYear.onItemSelectedListener = this
 
+        salonID  = intent.getStringExtra("salonID")?.toInt()
+        ticketID = intent.getStringExtra("ticketID")?.toInt()
+        price = intent.getStringExtra("price")?.toInt()
 
         binding.btnSaveCard.setOnClickListener {
             validateValues()
@@ -65,9 +72,18 @@ class PaymentActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     private fun addPayment(payment : Payment) {
         viewModel.add(payment)
         viewModel.liveData.observe(this){
-            if (it){
-                val intent = Intent(this,PurchaseActivity::class.java)
+            if (it && ticketID != null){
+                val intent = Intent(this, SeatSelectionActivity::class.java)
+                intent.putExtra("salonID",salonID)
+                intent.putExtra("ticketID",ticketID)
+                intent.putExtra("price",price)
                 startActivity(intent)
+                finish()
+                return@observe
+            }
+            if (it  && (ticketID == null || ticketID == 0)){
+                Toast.makeText(this,"Payment method has been added. Successfully",Toast.LENGTH_LONG).show()
+                finish()
             }else{
                 Toast.makeText(this,"Payment method has not been added.",Toast.LENGTH_LONG).show()
             }

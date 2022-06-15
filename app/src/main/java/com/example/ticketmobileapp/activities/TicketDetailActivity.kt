@@ -36,12 +36,11 @@ class TicketDetailActivity : AppCompatActivity() {
         binding.btnBuy.setOnClickListener {
                         paymentViewModel.getPaymentMethodsByUserID(CurrentUser.user.id!!)
                         paymentViewModel.liveData.observe(this){
+                            val salonID = binding.ticketReadDto?.ticket?.salonId?.toString()
+                            val ticketID = binding.ticketReadDto?.ticket?.id.toString()
+                            val price = binding.ticketReadDto?.ticket?.price?.toString()
                             if (it){
                                 val intent = Intent(this, SeatSelectionActivity::class.java)
-                                val salonID = binding.ticketReadDto?.ticket?.salonId?.toString()
-                                val ticketID = binding.ticketReadDto?.ticket?.id.toString()
-                                val price = binding.ticketReadDto?.ticket?.price?.toString()
-
                                 intent.putExtra("salonID",salonID)
                                 intent.putExtra("ticketID",ticketID)
                                 intent.putExtra("price",price)
@@ -49,6 +48,9 @@ class TicketDetailActivity : AppCompatActivity() {
                             }else{
                                 Toast.makeText(this,"You don't have a payment method. Please add a payment method",Toast.LENGTH_LONG).show()
                     val intent = Intent(this, PaymentActivity::class.java)
+                                intent.putExtra("salonID",salonID)
+                                intent.putExtra("ticketID",ticketID)
+                                intent.putExtra("price",price)
                     startActivity(intent)
                 }
             }
