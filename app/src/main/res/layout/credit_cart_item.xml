@@ -39,7 +39,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="3dp"
-                        android:text="5646564565456456"
+                        android:text="@{payment.cardNumber}"
+                        android:textColor="@color/black"
+                        android:textStyle="bold">
+
+                    </TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="3dp"
+                        android:text="@{payment.nameOnTheCard}"
                         android:textColor="@color/black"
                         android:textStyle="bold">
 
@@ -49,7 +58,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="3dp"
-                        android:text="12/2026"
+                        android:text='@{payment.month.toString() + "/" + payment.year.toString()}'
                         android:textColor="@color/black"
                         android:textStyle="bold">
 
@@ -59,7 +68,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="3dp"
-                        android:text="197"
+                        android:text="...CVV"
                         android:textColor="@color/black"
                         android:textStyle="bold">
 
@@ -69,7 +78,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="3dp"
-                        android:text="At Card"
+                        android:text="@{payment.cardName}"
                         android:textColor="@color/black"
                         android:textStyle="bold">
 

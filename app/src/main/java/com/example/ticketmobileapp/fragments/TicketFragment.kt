@@ -1,6 +1,7 @@
 package com.example.ticketmobileapp.fragments
 
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -31,9 +32,11 @@ class TicketFragment : Fragment(), OnClickListener<TicketReadDto> {
         dataBinding = FragmentTicketBinding.inflate(inflater)
 
         tickets = ArrayList<TicketReadDto>()
+        dataBinding.progressBar.visibility = View.VISIBLE
 
         viewModel.getTickets()
         viewModel.ticketListLiveData.observe(viewLifecycleOwner) {
+            dataBinding.progressBar.visibility = View.INVISIBLE
             tickets.clear()
             tickets.addAll(it)
             adapter.notifyDataSetChanged()
@@ -43,7 +46,6 @@ class TicketFragment : Fragment(), OnClickListener<TicketReadDto> {
 
         return dataBinding.root
     }
-
     private fun runRecyclerView() {
         val layoutManager = LinearLayoutManager(context)
         dataBinding.recyclerViewTicketFragment.layoutManager = layoutManager

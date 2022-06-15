@@ -12,6 +12,15 @@
             android:layout_height="match_parent">
 
         </androidx.recyclerview.widget.RecyclerView>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/black"
 
+            >
+
+        </ProgressBar>
     </FrameLayout>
 </layout>

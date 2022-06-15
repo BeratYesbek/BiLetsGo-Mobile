@@ -10,6 +10,7 @@
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
+        android:id="@+id/scrollViewTicketDetail"
         android:layout_height="match_parent">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -17,6 +18,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:id="@+id/linearLayoutTicketDetail"
             android:orientation="vertical"
             tools:context=".activities.TicketDetailActivity">
 
@@ -176,6 +178,8 @@
                 android:drawableLeft="@drawable/ic_shopping_cart_white"
                 android:text="Buy" />
         </LinearLayout>
+
     </ScrollView>
+
 
 </layout>

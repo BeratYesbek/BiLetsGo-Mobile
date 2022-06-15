@@ -7,6 +7,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".activities.PurchaseActivity">
+
         <androidx.cardview.widget.CardView
             android:id="@+id/purchaseCardView"
             android:layout_width="match_parent"
@@ -130,6 +131,7 @@
             </TextView>
 
 
+
         </LinearLayout>
 
         <Button
@@ -142,5 +144,7 @@
             >
 
         </Button>
+
     </LinearLayout>
+
 </layout>

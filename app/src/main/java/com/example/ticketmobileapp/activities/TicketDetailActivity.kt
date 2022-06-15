@@ -3,6 +3,7 @@ package com.example.ticketmobileapp.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.ticketmobileapp.R
@@ -22,6 +23,7 @@ class TicketDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTicketDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.linearLayoutTicketDetail.visibility = View.INVISIBLE
 
         viewModel.getTickets()
         val ticketID = intent.getStringExtra("ticketID")
@@ -32,20 +34,20 @@ class TicketDetailActivity : AppCompatActivity() {
 
 
         binding.btnBuy.setOnClickListener {
-            paymentViewModel.getPaymentMethodsByUserID(CurrentUser.user.id!!)
-            paymentViewModel.liveData.observe(this){
-                if (it){
-                    val intent = Intent(this, SeatSelectionActivity::class.java)
-                    val salonID = binding.ticketReadDto?.ticket?.salonId?.toString()
-                    val ticketID = binding.ticketReadDto?.ticket?.id.toString()
-                    val price = binding.ticketReadDto?.ticket?.price?.toString()
+                        paymentViewModel.getPaymentMethodsByUserID(CurrentUser.user.id!!)
+                        paymentViewModel.liveData.observe(this){
+                            if (it){
+                                val intent = Intent(this, SeatSelectionActivity::class.java)
+                                val salonID = binding.ticketReadDto?.ticket?.salonId?.toString()
+                                val ticketID = binding.ticketReadDto?.ticket?.id.toString()
+                                val price = binding.ticketReadDto?.ticket?.price?.toString()
 
-                    intent.putExtra("salonID",salonID)
-                    intent.putExtra("ticketID",ticketID)
-                    intent.putExtra("price",price)
-                    startActivity(intent)
-                }else{
-                    Toast.makeText(this,"You don't have a payment method. Please add a payment method",Toast.LENGTH_LONG).show()
+                                intent.putExtra("salonID",salonID)
+                                intent.putExtra("ticketID",ticketID)
+                                intent.putExtra("price",price)
+                                startActivity(intent)
+                            }else{
+                                Toast.makeText(this,"You don't have a payment method. Please add a payment method",Toast.LENGTH_LONG).show()
                     val intent = Intent(this, PaymentActivity::class.java)
                     startActivity(intent)
                 }
@@ -56,6 +58,7 @@ class TicketDetailActivity : AppCompatActivity() {
     private fun getTicketDetailById(ticketID: Number) {
         viewModel.getTicketById(ticketID)
         viewModel.ticketLiveData.observe(this) {
+            binding.linearLayoutTicketDetail.visibility = View.VISIBLE
             binding.ticketReadDto = it
         }
     }

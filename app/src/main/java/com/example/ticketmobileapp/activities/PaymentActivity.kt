@@ -44,8 +44,16 @@ class PaymentActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         val nameOnTheCard = binding.editTextNameOnTheCard.text.toString()
         val cvv = binding.editTextCvv.text.toString()
         val cardName = binding.editTextCardName.text.toString()
-        if(cardNumber.length == 16){
+        if(cardNumber.length != 16){
             Toast.makeText(this,"Enter 16 character",Toast.LENGTH_LONG).show()
+            return
+        }
+        if(nameOnTheCard.isNullOrBlank()){
+            Toast.makeText(this,"Name on the card cannot be blank",Toast.LENGTH_LONG).show()
+            return
+        }
+        if(cvv.isNullOrBlank()){
+            Toast.makeText(this,"Cvv cannot be blank",Toast.LENGTH_LONG).show()
             return
         }
         val payment = Payment(0, cardNumber, nameOnTheCard, cardName, year, month, cvv.toInt(),

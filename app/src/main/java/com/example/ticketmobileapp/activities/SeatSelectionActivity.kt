@@ -53,4 +53,8 @@ class SeatSelectionActivity : AppCompatActivity() , OnClickListener<Seat>{
     }
 
 
+    override fun onDestroy() {
+        this.finish()
+        super.onDestroy()
+    }
 }
